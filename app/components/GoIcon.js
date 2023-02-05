@@ -1,13 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { createIconSetFromIcoMoon } from '@expo/vector-icons';
+import Animated from 'react-native-reanimated';
 
 const Icon = createIconSetFromIcoMoon(
   require('../assets/icomoon/selection.json'),
   'IcoMoon',
   'icomoon.ttf'
 );
+
+const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
 
 function GoIcon({ style , name , size , color }) {
@@ -20,7 +22,7 @@ function GoIcon({ style , name , size , color }) {
         return null;
     }
     return (
-            <Icon style={style} name={name} size={size} color={color} />
+            <AnimatedIcon style={style} name={name} size={size} color={color} />
     );
 }
 

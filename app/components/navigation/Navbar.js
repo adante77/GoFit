@@ -23,7 +23,11 @@ function Navbar({ Logo , back , title , Actions , actionLenght , style}) {
                         </TouchableOpacity>
                         : Logo
                     }
-                    <AppText style={{ fontFamily:"Urbanist-Bold" , fontSize : 24 , color : colors.grayscale._900  }}>{title}</AppText>
+                    {  typeof title === "string" ? 
+                        <AppText style={{ fontFamily:"Urbanist-Bold" , fontSize : 24 , color : colors.grayscale._900  }}>{title}</AppText>
+                        : title
+                    }
+                    
                 </View>
                 <View style={styles(actionLenght).rightSection}>
                     {Actions}
@@ -36,8 +40,6 @@ function Navbar({ Logo , back , title , Actions , actionLenght , style}) {
 const styles = (actionLength) => StyleSheet.create({
     container : {
         flexDirection : 'row',
-        paddingTop: 12,
-        paddingBottom : 14,
     },
     navbar : {
         flexDirection: "row",
@@ -47,7 +49,8 @@ const styles = (actionLength) => StyleSheet.create({
     leftSection :{
         flexDirection : "row",
         width : "79%",
-        alignItems : "center"
+        alignItems : "center",
+       
     },
     rightSection :{
         flexDirection : "row",

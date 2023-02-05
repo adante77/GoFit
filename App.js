@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
-import React , { useCallback } from 'react';
+import React , { useCallback , useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Navigator from './app/components/navigation/Navigator';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import realm from './app/config/database';
 
 export default function App() {  
   const [fontsLoaded] = useFonts({
@@ -13,18 +13,19 @@ export default function App() {
     "Urbanist-SemiBold" : require('./app/assets/fonts/Urbanist/Urbanist-SemiBold.otf'),
   });
 
-
   const onLayoutRootView = useCallback(async () => {
   if (fontsLoaded) {
       await SplashScreen.hideAsync();
   }
   }, [fontsLoaded]);
 
+
   if (!fontsLoaded) {
   return null;
   }
-  console.log(realm);
-  console.log(44);
+
+  
+  
   return (
     <NavigationContainer onLayout={onLayoutRootView}>
       <Navigator/>
